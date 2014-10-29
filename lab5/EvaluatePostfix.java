@@ -60,8 +60,11 @@ public class EvaluatePostfix
 		while (st.hasMoreTokens()){
 			String s = st.nextToken();
 			if (isOperator(s)) {
-				String o1 = (String) myStack.pop();
-				String o2 = (String) myStack.pop();
+				String o1, o2;
+				if(!myStack.isEmpty()) o1 = (String) myStack.pop();
+				else return null;
+				if(!myStack.isEmpty()) o2 = (String) myStack.pop();
+				else return null;
 				/*double r = evaluateOperation(Double.parseDouble(o2), Double.parseDouble(o1), s);
 				System.out.println(o2 +" "+s+" "+o1+"="+r);*/
 				myStack.push(Double.toString(evaluateOperation(Double.parseDouble(o2), Double.parseDouble(o1), s)));
